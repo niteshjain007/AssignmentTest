@@ -40,22 +40,18 @@ public class DriverUtility {
         driver.quit();
     }
 
-    //Mobile Driver
     public static AndroidDriver androidDriver ;
     public static void setAndroidDriver() throws IOException {
 
         File file = new File(PropertyUtility.readConfig("SelendroidApp"));
         DesiredCapabilities cap = new DesiredCapabilities();
         cap.setCapability(MobileCapabilityType.DEVICE_NAME, "NexusTest");
-       //NITESH// cap.setCapability(MobileCapabilityType.UDID,PropertyHandler.readData("deviceName"));
-        //new line add for platform
         cap.setCapability("platformName", "Android");
         cap.setCapability(MobileCapabilityType.APP, file.getAbsolutePath());
         cap.setCapability(MobileCapabilityType.AUTOMATION_NAME, "uiautomator2");
 
        	androidDriver = new AndroidDriver(new URL(PropertyUtility.readConfig("appiumServerURL")), cap);
-       // androidDriver = new AndroidDriver(cap);
-
+    
     }
     public static AndroidDriver getAndroidDriver()
     {
